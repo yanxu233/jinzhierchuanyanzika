@@ -114,8 +114,8 @@
 
   </style>
 
-  <link rel="stylesheet" href="dist/app.v32.6.8.css" media="print" onload="this.media='all'">
-  <script defer src="dist/app.v32.6.8.js" fetchpriority="high"></script>
+  <link rel="stylesheet" href="dist/app.v32.9.1.css" media="print" onload="this.media='all'">
+  <script defer src="dist/app.v32.9.1.js" fetchpriority="high"></script>
 
    
   <script>
@@ -375,7 +375,7 @@
 
 
 
-      var BOOT_FILES = ['dist/app.v32.6.8.css','dist/app.v32.6.8.js'];
+      var BOOT_FILES = ['dist/app.v32.9.1.css','dist/app.v32.9.1.js'];
 
 
 
@@ -2135,7 +2135,7 @@
       <div class="mb-head-btns">
            
           <button type="button" class="mb-ico-btn" id="mbSetBtn" aria-label="信箱设置"><svg viewBox="0 0 24 24" style="fill:currentColor;stroke:none"><circle cx="5" cy="12" r="1.9"></circle><circle cx="12" cy="12" r="1.9"></circle><circle cx="19" cy="12" r="1.9"></circle></svg></button>
-          <button type="button" class="mb-ico-btn" data-view="letterstats" aria-label="写信统计"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20v-6M12 20V8M18 20v-9"/></svg></button>
+          <button type="button" class="mb-ico-btn" id="mbStatsBtn" data-view="letterstats" aria-label="写信统计"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20v-6M12 20V8M18 20v-9"/></svg></button>
       </div>
        
       <div class="mailbox-tabs">
@@ -2604,6 +2604,12 @@
          
         <div class="setting-card set-entry" data-tab="notify">
           <button type="button" class="set-entry-row" id="silentEntry"><span class="set-entry-tx"><strong>主动消息管理</strong><small id="silentEntryState"></small></span></button>
+        </div>
+
+         
+        <div class="setting-card fold flat" data-tab="notify" data-fold="sxact">
+          <div class="fold-hd"><span class="fold-ti">时讯</span><span class="fold-sum" id="sumSxAct"></span></div>
+          <div class="fold-bd"><div class="ap-row"><span>联系人可以主动发时讯<span style="display:block;font-size:11px;color:var(--muted)">关掉＝所有 TA 都不再自己开口发时讯（你在时讯里发一句，它照常回，只是不再是它先开口）。这一枚管全站；想只关某一位，去时讯页右上角 ⋯ → 主动发讯 那一档。</span></span><input type="checkbox" id="sxGlobalAct" style="width:18px;height:18px;flex:none;margin:0;accent-color:var(--ink)"></div><p class="data-note" id="sxGlobalActState"></p></div>
         </div>
 
          
@@ -7142,12 +7148,17 @@
         <div class="hm-pot-floor" id="hmPotFloor"></div>
         <div class="hm-table" id="hmTable"></div>
         <div class="hm-photos" id="hmPhotos" hidden></div>
+         
+        <div class="hm-wx-trace" aria-hidden="true"></div>
+        <div class="hm-win-veil" aria-hidden="true"></div>
       </div>
        
       <div id="hmBody"> <div class="hm-skel" aria-hidden="true"><span class="hm-skel-win"><i></i><i></i></span><span class="hm-skel-line"></span><span class="hm-skel-line short"></span></div></div>
     </div>
   </div>
 </section>
+ 
+<input type="file" id="hmFile" accept="image/*" hidden>
 <div class="fs-sheet-mask fs-sheet-full" id="hmSetMask" data-no-swipe hidden>
   <div class="fs-sheet" role="dialog" aria-modal="true" aria-label="家园·装扮">
     <div class="fs-sheet-bar">
